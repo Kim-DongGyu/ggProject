@@ -100,12 +100,10 @@
 		<td>${dto.returndate}</td>		
 	<tr>
 	</c:forEach>
-	
-
 </table>
 	
 	<div>
-		<form id="searchForm" action="./contractList">
+		<form id="searchForm" action="contractList"  method="POST">
 			<p style="margin: 0; padding: 0;">
 			<input type="text" name="memberId">
 			<input type="submit" value="검색">

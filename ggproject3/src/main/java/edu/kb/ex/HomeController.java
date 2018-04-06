@@ -3,6 +3,7 @@ package edu.kb.ex;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.kb.ex.dao.ContractDao;
+import edu.kb.ex.dto.ContractDto;
 
 
 /**
@@ -58,14 +60,14 @@ public class HomeController {
 //	}
 	
 	@RequestMapping("/contractList")
-	public String list(HttpServletRequest request, Model model) {
-		
+	public String contractList(HttpServletRequest request, Model model) {
 		ContractDao dao = sqlSession.getMapper(ContractDao.class);
+		
 		String memberId = request.getParameter("memberId");
-		
-		
-		model.addAttribute("contractList", dao.listDao("memberId"));
-				
+		if(memberId!=null) {
+			model.addAttribute("contractList", dao.listDao(memberId.trim()));
+		}
+
 		return "contractList";
 	}
 	
