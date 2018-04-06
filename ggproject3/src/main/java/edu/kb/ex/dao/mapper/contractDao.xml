@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="edu.kb.ex.dao.ContractDao">
+ 	<select id="listDao" resultType="edu.kb.ex.dto.ContractDto">
+<!--  		select * from contract order by conNum desc -->
+		select * from contract where memberId=#{param1} order by conNum desc
+ 	</select>
+ 	
+ 	 <select id="carList" resultType="edu.kb.ex.dto.ContractDto">
+ 		select * from car order by carnum desc
+ 	</select>
+ 	
+ 	<insert id="writeDao">
+ 		INSERT INTO contract VALUES (#{param1}, #{param2}, BOARD_SEQ.NEXTVAL, #{param3},#{param4},#{param5})
+<!--  		INSERT INTO contract VALUES (#{param1}, #{param2}, BOARD_SEQ.NEXTVAL, #{param3}, TO_DATE('#{param4}','YYYY-MM-DD'),TO_DATE('#{param5}','YYYY-MM-DD') -->
+ 	</insert>
+ 	
+ 
+ 
+ </mapper>
